@@ -8,6 +8,7 @@ If you want to install *10.14.1*, I highly suggest you go over [blint01's guide]
 - macOS Mojave 10.14.5 (Downloaded from the official App Store)
 - [Clover EFI (Latest version)](https://github.com/Dids/clover-builder)
 - [Clover Configurator](http://mackie100projects.altervista.org/download-clover-configurator/)
+- BCM943224HMS WiFi Half Mini PCI card. The standard WiFi card is not supported by Apple unfortunatly.
 - A clone of this repository somewhere safe
 - 2 hours, at least
 
