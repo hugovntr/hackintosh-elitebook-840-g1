@@ -38,6 +38,7 @@ And there you go, you are done with this step! Let's move on to the BIOS setup.
 
 ## BIOS Setup
 Access the BIOS of your Elitebook using the *F10* key and go to the **Advanced** tab.
+
 Change those settings:
 - **Device Configuration**:
   - Uncheck the *Fn key switch*
@@ -51,3 +52,53 @@ Change those settings:
 
 
 Save and reboot on your USB Installer
+
+
+## Install
+Spamming *F9* key at start-up and select *External Device*
+
+You should normally see the **Clover** menu appear on your screen with *Boot macOS Install from Install macOS Mojave*, if that's the case then press *Enter* and prepare yourself because from now on you are going to spend a lot of time doing absolutely nothing but watching it run...
+
+**Don't panic if it takes ages to boot, as long as it doesn't restart unexpectedly, wait!**
+
+After around 10-15minutes you should see the *OS X Utilities/macOS Utilities* menu.
+- Select the *Disk Utility*
+- In the *View* menu select *(Show all Device)* then select your drive, not the partition but the actual drive you want to install macOS Mojave on!
+- Click *Erase* and set a *Name*, format in **APFS** and Scheme to **GUID Partition Map**. When it's done, close the *Disk Utility*
+- Click on *Install macOS*, accept everything and install it to your freshly wipped drive!
+  - **During this step the computer should restart**(that's why you have to pay attention). After the first restart you should see 2 or more drives on the *Clover* menu. Select the drive with **the name that you set 2 steps before** and let it run!
+  - If a second restart occur, do the exact same thing
+- After a loooooong wait, macOS should finally greet you with the standard installation questions like your Country, Username, ...
+
+**Make sure to do all this steps at once**
+
+You have now a working Hackintosh!.. But it still can not boot without the USB :)
+
+
+## Post Install
+So, this is the final steps.
+In this one, we are going to fix every problem that our current installation has. Like not starting without the USB for example.
+
+First you need to be connected to your router with an *Ethernet cable* to downloads the tools that we are going to need.
+Once that's done, we can move on:
+- Install [Clover EFI (Latest version)](https://github.com/Dids/clover-builder) but this time on your *drive* and not the USB
+- Install Xcode "toolkit"
+```xcode-select --install```
+- We are going to clone *RehabMan's Probook repo*
+```
+mkdir ~/Downloads/Projects
+cd ~/Downloads/Projects
+git clone https://github.com/RehabMan/HP-ProBook-4x30s-DSDT-Patch probook.git
+```
+- Next, download and install the *Kexts*
+```cd ~/Downloads/Projects/probook.git
+./download.sh
+./install-downloads.sh
+```
+- Here we are going to disable the hibernation mode. (**Do it unless you want to redo that all over again in 15 minutes**)
+```
+sudo pmset -a hibernatemode 0
+sudo rm /var/vm/sleepimage
+sudo mkdir /var/vm/sleepimage
+```
+
