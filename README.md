@@ -84,7 +84,9 @@ First you need to be connected to your router with an *Ethernet cable* to downlo
 Once that's done, we can move on:
 - Install [Clover EFI (Latest version)](https://github.com/Dids/clover-builder) but this time on your *drive* and not the USB
 - Install Xcode "toolkit"
-```xcode-select --install```
+```
+xcode-select --install
+```
 - We are going to clone *RehabMan's Probook repo*
 ```
 mkdir ~/Downloads/Projects
@@ -108,9 +110,13 @@ cd  ~/Downloads/Projects/probook.git
 ./build.sh
 ```
 - Mount the EFI
-```./mount_efi.sh```
+```
+./mount_efi.sh
+```
 - Install the SSDT patches
-```./install_acpi.sh install_8x0g1_haswell```
+```
+./install_acpi.sh install_8x0g1_haswell
+```
 - And finaly, install the *config.plist*
 ```
 cp ./config/config_8x0_G1_Haswell.plist /Volumes/EFI/EFI/Clover/config.plist
