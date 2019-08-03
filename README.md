@@ -126,10 +126,10 @@ Make a copy of that *config.plist* and open it in [Clover Configurator](http://m
 Save that *config.plist* and put it back to your **EFI** Volume
 
 Last step, if like me and *blint01* your sound card wasn't recongnized. Go to **EFI -> EFI -> CLOVER -> ACPI -> PATCHED** and open the **SSDT-8x0G1h.aml** file with *MaciASL*. Find *layout* (using Cmd+F).You should find 2 matches. The default value is `0x0D`, that means layout 13. Switch both `0x0D` after layout to either of these:
--layout 3 = 0x03
--layout 12 = 0x0C
--layout 33 = 0x21
--layout 84 = 0x54
+- Layout 3 = 0x03
+- Layout 12 = 0x0C
+- Layout 33 = 0x21
+- Layout 84 = 0x54
 
 For me the layout 84 worked perfectly! After you made the changes to both value, save it and reboot your computer, to see if it worked or not.
 
