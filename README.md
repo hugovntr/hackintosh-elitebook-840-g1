@@ -101,4 +101,33 @@ sudo pmset -a hibernatemode 0
 sudo rm /var/vm/sleepimage
 sudo mkdir /var/vm/sleepimage
 ```
+- Now let's build stuff shall we ?
+```
+cd  ~/Downloads/Projects/probook.git
+./build.sh
+```
+- Mount the EFI
+```./mount_efi.sh```
+- Install the SSDT patches
+```./install_acpi.sh install_8x0g1_haswell```
+- And finaly, install the *config.plist*
+```
+cp ./config/config_8x0_G1_Haswell.plist /Volumes/EFI/EFI/Clover/config.plist
+```
 
+Make a copy of that *config.plist* and open it in [Clover Configurator](http://mackie100projects.altervista.org/download-clover-configurator/)*(on your brand-new mac)*. Go to **SMBIOS** and Generate a new *Serial Number*.
+Save that *config.plist* and put it back to your **EFI** Volume
+
+Last step, if like me and *blint01* your sound card wasn't recongnized. Go to **EFI -> EFI -> CLOVER -> ACPI -> PATCHED** and open the **SSDT-8x0G1h.aml** file with *MaciASL*. Find *layout* (using Cmd+F).You should find 2 matches. The default value is `0x0D`, that means layout 13. Switch both `0x0D` after layout to either of these:
+-layout 3 = 0x03
+-layout 12 = 0x0C
+-layout 33 = 0x21
+-layout 84 = 0x54
+
+For me the layout 84 worked perfectly! After you made the changes to both value, save it and reboot your computer, to see if it worked or not.
+
+
+And there you go! You now have a perfectly working Hackintosh on macOS 10.14.5!
+Thanks again to *blint01*, *RehabMan*, and everyone else in the /r/Hackintosh subreddit!
+
+If you have any question you can contact me here or on Twitter (Can be found in my GitHub profil page)
